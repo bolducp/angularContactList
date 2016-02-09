@@ -5,7 +5,9 @@ var app = angular.module("contactList", ["ngStorage", "ui.bootstrap"]);
 
 app.controller("mainCtrl", function($scope, $localStorage, $filter){
 
-  $localStorage.contacts = [];
+  if (!$localStorage.contacts.length){
+    $localStorage.contacts = [];
+  }
 
   $scope.contacts = $localStorage.contacts;
 
