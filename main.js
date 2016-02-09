@@ -4,7 +4,8 @@
 var app = angular.module("contactList", ["ngStorage", "ui.bootstrap"]);
 
 app.controller("mainCtrl", function($scope, $localStorage, $filter){
-  console.log("hello from mainCtrl!");
+
+  var $localStorage.contacts;
 
   $scope.contacts = $localStorage.contacts;
 
@@ -28,5 +29,5 @@ app.controller("mainCtrl", function($scope, $localStorage, $filter){
    $scope.order('lastName', false);
 
 
-  // $scope.edit 
+  // $scope.edit
 });
