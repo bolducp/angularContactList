@@ -26,4 +26,7 @@ app.controller("mainCtrl", function($scope, $localStorage, $filter){
     $scope.contacts = orderBy($scope.contacts, predicate, $scope.reverse);
   };
    $scope.order('lastName', false);
+
+
+  // $scope.edit 
 });
