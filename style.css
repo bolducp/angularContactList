@@ -1,0 +1,30 @@
+body {
+  font-family: 'Poiret One', cursive;
+  background-color: snow;
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  text-align: center;
+}
+
+h2 {
+  font-size: 34px;
+}
+
+th {
+  font-weight: bolder;
+  font-size: 22px;
+}
+
+.lightsteelblue {
+  background-color: lightsteelblue;
+}
+
+.sortorder:after {
+  content: '\2191';
+}
+
+.sortorder.reverse:after {
+  content: '\2193';
+}

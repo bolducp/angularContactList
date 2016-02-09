@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/yeti/bootstrap.min.css">
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Poiret+One|Pacifico' type='text/css'>
+    <link rel="stylesheet" href="style.css">
+
+    <title>Contact List</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Paige's Angular Contact List</h1>
+      <div ng-app='contactList' ng-controller="mainCtrl">
+
+      <div class="page-header">
+        <h2>New Contact</h2>
+        <br>
+          <form id="newContactForm" class="form-inline">
+            <div class="row">
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label for="firstName">First Name:</label>
+                  <input type="text" class="form-control" ng-model="newContact.firstName">
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label for="lastName">Last Name:</label>
+                  <input type="text" class="form-control" ng-model="newContact.lastName">
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label for="email">Email Address:</label>
+                  <input type="email" class="form-control" ng-model="newContact.email">
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label for="phone">Phone Number:</label>
+                  <input type="tel" class="form-control" ng-model="newContact.phone">
+                </div>
+              </div>
+            </div>
+            <br>
+            <button ng-click="addContact()" type="button" class="btn btn-primary">Add New Contact</button>
+        </form>
+      </div>
+        <br>
+        <br>
+        <div class="form-group">
+          <label for="filter">Search:</label>
+          <input ng-model="filterText" class="form-control" type="text" id="filter">
+        </div>
+
+
+        <table class="table contacts" ng-if="contacts.length">
+          <thead>
+            <th>
+              <button class="btn btn-info" ng-click="order('firstName')">First Name</button>
+              <span class="sortorder" ng-show="predicate === 'firstName'" ng-class="{reverse:reverse}"></span>
+            </th>
+            <th>
+              <button class="btn btn-info"  ng-click="order('lastName')">Last Name</button>
+              <span class="sortorder" ng-show="predicate === 'lastName'" ng-class="{reverse:reverse}"></span>
+            </th>
+            <th>
+              <button class="btn btn-info" ng-click="order('email')">Email</button>
+              <span class="sortorder" ng-show="predicate === 'email'" ng-class="{reverse:reverse}"></span>
+            </th>
+            <th>
+              <button class="btn btn-info"  ng-click="order('phone')">Phone</button>
+              <span class="sortorder" ng-show="predicate === 'phone'" ng-class="{reverse:reverse}"></span>
+            </th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </thead>
+          <tbody>
+            <tr ng-repeat="(index, contact) in contacts | filter: filterText track by $index"
+                ng-class='{lightsteelblue: $even}'>
+              <td ng-repeat="(key, value) in contact">{{value}}</td>
+              <td>edit</td>
+              <td>
+                <button ng-click="deleteContact(contact)" class="btn btn-danger">
+                  <span class="glyphicon glyphicon-trash"></span>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+      </table>
+
+
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.1.2/ui-bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
